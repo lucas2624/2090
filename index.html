@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Conversation</title>
+
+<style>
+body{
+    background: linear-gradient(135deg, #fdfbfb, #ebedee);
+    font-family: "Segoe UI", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.box{
+    background: white;
+    width: 90%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+#text{
+    font-size: 20px;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+button{
+    background: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 18px;
+    margin: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover{
+    background: #554fd8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <div id="text">AslamOalaikum</div>
+    <div id="options">
+        <button onclick="step1()">Walaikum Salam</button>
+    </div>
+</div>
+
+<script>
+function step1(){
+    text("How are you doing?");
+    options(`
+        <button onclick="great()">I am doing great</button>
+        <button onclick="alright()">Mmm alright</button>
+    `);
+}
+
+function great(){
+    text("Good to know 🌸");
+    weather();
+}
+
+function alright(){
+    text("Okay");
+    weather();
+}
+
+function weather(){
+    setTimeout(()=>{
+        text("How is the weather there");
+        options(`
+            <button onclick="life()">Ok</button>
+            <button onclick="life()">Ok</button>
+        `);
+    },600);
+}
+
+function life(){
+    text("How is your life going");
+    options(`
+        <button onclick="lifeReply()">Same routine</button>
+        <button onclick="lifeReply()">It's going good</button>
+    `);
+}
+
+function lifeReply(){
+    text("That's completely right");
+    ramadan();
+}
+
+function ramadan(){
+    setTimeout(()=>{
+        text("Ramadan is coming, so how are you feeling?");
+        options(`
+            <button onclick="blessed()">Good</button>
+            <button onclick="blessed()">Blessed</button>
+        `);
+    },600);
+}
+
+function blessed(){
+    text("I consider myself very blessed. Allah always gives me more than i Expect 🌸");
+    options(`
+        <button onclick="eat()">MashAllah</button>
+        <button onclick="eat()">No doubt</button>
+    `);
+}
+
+function eat(){
+    text("have you eaten");
+    options(`
+        <button onclick="yes()">Yes</button>
+        <button onclick="no()">No</button>
+    `);
+}
+
+function yes(){
+    text("good 🌸");
+    end();
+}
+
+function no(){
+    text("kiu");
+    end();
+}
+
+function end(){
+    setTimeout(()=>{
+        text("okay Khuda Hafiz");
+        options("");
+    },600);
+}
+
+function text(t){
+    document.getElementById("text").innerText = t;
+}
+
+function options(o){
+    document.getElementById("options").innerHTML = o;
+}
+</script>
+
+</body>
+</html>
